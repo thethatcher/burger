@@ -11,7 +11,7 @@ var burger = {
 			callback(result);
 		});
 	}
-	,updateOne: function(id,columns,values,callback){
+	,update: function(id,columns,values,callback){
 		orm.updateOne("burgers",id,columns,values,function(result){
 			callback(result);
 		});

@@ -16,6 +16,7 @@ function makeBindVarArray(columns,values){
 		bindArray.push(columns[i]);
 		bindArray.push(values[i]);
 	}
+	console.log(bindArray);
 	return bindArray;
 }
 
