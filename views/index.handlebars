@@ -1,38 +1,50 @@
-<h1>~EAT DA BURGER~</h1>
-<hr>
+<div class="container">
+  <h1 class="text-center">~EAT DA BURGER~</h1>
+  <img class="center-block" src="../../assets/img/burgerIcon.png">
+  <hr>
 
-<div>
-  <h2>Add a Burger you want to eat</h2>
-<form class="create-update-form" action="/" method="POST">
-  <div class="form-group">
-    <label for="brg">Burger Name:</label>
-    <input type="text" id="brg" name="burger_name">
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <h3>Add a Burger you want to eat</h3>
+        <form class="create-update-form" action="/" method="POST">
+          <div class="form-group">
+            <label for="brg">Burger Name:</label>
+            <input type="text" id="brg" name="burger_name">
+          </div>
+          <button class="center-block" type="submit">Add Burger</button>
+        </form>
+      </div>
+      <div class="col-sm-4"></div>
+    </div>
   </div>
-  <button type="submit">Add Burger</button>
-</form>
-</div>
-
-
-<div>
-  {{#each burgers}}
-    {{#unless this.devoured}}
-      <div>
-        <p>{{burger_name}}
-          <form action="/{{this.id}}?_method=PUT" method="POST">
-          <input type="hidden" name="devoured" value="true">
-          <button type="submit">EAT DA BURGER!</button>
-          </form>
-        </p>
+  <hr>
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 burger center-block text-center">
+        {{#each burgers}}
+          {{#unless this.devoured}}
+            <div>
+              <p>{{burger_name}}
+                <form action="/{{this.id}}?_method=PUT" method="POST">
+                <input type="hidden" name="devoured" value="true">
+                <button type="submit">EAT DA BURGER!</button>
+                </form>
+              </p>
+            </div>
+          {{/unless}}
+        {{/each}}
+      </div>  
+      <div class="col-sm-6 burger center-block text-center">
+        {{#each burgers}}
+          {{#if this.devoured}}
+            <div>
+              <p>{{burger_name}}</p>
+            </div>
+          {{/if}}
+        {{/each}}
       </div>
-    {{/unless}}
-  {{/each}}
-
-  {{#each burgers}}
-    {{#if this.devoured}}
-      <div>
-        <p>{{burger_name}}</p>
-      </div>
-    {{/if}}
-  {{/each}}
-
+    </div>
+  </div>
 </div>
