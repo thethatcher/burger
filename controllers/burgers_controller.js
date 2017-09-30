@@ -13,16 +13,23 @@ router.get("/",function(req,res){
 });
 
 router.post("/",function(req,res){
-
+	burger.create(req.body.burger_name,function(createResult){
+		burger.all(function(result){
+			var hbsObj ={burgers: result};
+			console.log("get function called");
+			console.log(hbsObj);
+			res.render("index",hbsObj);
+		});
+	});
 });
 
 router.put("/:id",function(req,res){
 	burger.update(req.params.id,["devoured"],[true],function(updateResult){
 		burger.all(function(result){
-		var hbsObj ={burgers: result};
-		console.log("get function called");
-		console.log(hbsObj);
-		res.render("index",hbsObj);
+			var hbsObj ={burgers: result};
+			console.log("get function called");
+			console.log(hbsObj);
+			res.render("index",hbsObj);
 		});
 	});
 	
