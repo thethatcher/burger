@@ -1,6 +1,6 @@
 var connection = require("./connection.js");
 
-//helper function to format SQL query strings
+//helper functions to format SQL query strings
 function setFormat(string,columns,values){
 	var rtn = string;
 	for (var i = 0; i < columns.length; i++) {
@@ -27,6 +27,7 @@ function verifyLen(columns, values){
 	return true;
 }
 
+//start the ORM. 
 var orm = {
 	selectAll: function(table, callback){
 		var queryString = "SELECT * FROM ??";
